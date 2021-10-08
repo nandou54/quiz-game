@@ -1,0 +1,17 @@
+.base {
+  background-color: blue;
+  text-align: left;
+
+  padding: 15px 20px;
+  width: 100%;
+
+  border-radius: 15px;
+}
+
+.base.checked {
+  background-color: green;
+}
+
+.base :checked .base * {
+  border: 1px solid red;
+}

@@ -1,0 +1,146 @@
+.base {
+  height: 100vh;
+  width: 100%;
+  font-size: 2.5rem;
+}
+
+.base .blackscreen {
+  background-color: black;
+  height: 100vh;
+  width: 100%;
+
+  transform: translateX(100%);
+}
+
+.base.transition .blackscreen {
+  animation: occur 1s ease-in-out;
+}
+
+@keyframes occur {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.base.clouds {
+  background-color: var(--blue-tack);
+
+  background-image: repeating-radial-gradient(
+      circle at 0.77em 0.87em,
+      var(--white),
+      var(--white) 0.12em,
+      var(--trans) 0.121em,
+      var(--trans) 3em
+    ),
+    repeating-radial-gradient(
+      circle at 0.94em 1.05em,
+      var(--white),
+      var(--white) 0.16em,
+      var(--trans) 0.161em,
+      var(--trans) 3em
+    ),
+    repeating-radial-gradient(
+      circle at 0.24em 1.05em,
+      var(--white),
+      var(--white) 0.16em,
+      var(--trans) 0.161em,
+      var(--trans) 3em
+    ),
+    repeating-radial-gradient(
+      circle at 0.5em 0.92em,
+      var(--white),
+      var(--white) 0.26em,
+      var(--trans) 0.261em,
+      var(--trans) 3em
+    ),
+    repeating-radial-gradient(
+      circle at 0.58em 1.1em,
+      var(--white),
+      var(--white) 0.35em,
+      var(--trans) 0.351em,
+      var(--trans) 3em
+    );
+  background-size: 2em 1.21em;
+  background-position: -0.3em -0.2em;
+}
+
+.base.clouds::after {
+  background-image: repeating-radial-gradient(
+      circle at 0.74em 1.08em,
+      var(--white),
+      var(--white) 0.13em,
+      var(--trans) 0.131em,
+      var(--trans) 3em
+    ),
+    repeating-radial-gradient(
+      circle at 0.22em 1.05em,
+      var(--white),
+      var(--white) 0.16em,
+      var(--trans) 0.161em,
+      var(--trans) 3em
+    ),
+    repeating-radial-gradient(
+      circle at 0.45em 1.02em,
+      var(--white),
+      var(--white) 0.28em,
+      var(--trans) 0.281em,
+      var(--trans) 3em
+    ),
+    repeating-radial-gradient(
+      circle at 0.45em 1.2em,
+      var(--white),
+      var(--white) 0.28em,
+      var(--trans) 0.281em,
+      var(--trans) 3em
+    );
+  background-size: 2em 1.21em;
+  background-position: -1.2em 0.4em;
+}
+
+.base.moon {
+  background: var(--bloom);
+  background-image: repeating-radial-gradient(
+      circle at 0.35em 0.15em,
+      var(--bloom),
+      var(--bloom) 0.2em,
+      var(--trans) 0.21em,
+      var(--trans) 3em
+    ),
+    repeating-radial-gradient(
+      circle at 0.25em 0.25em,
+      var(--rouge),
+      var(--rouge) 0.2em,
+      var(--trans) 0.21em,
+      var(--trans) 3em
+    ),
+    repeating-radial-gradient(
+      circle at 0.22em 0.28em,
+      var(--ink),
+      var(--ink) 0.2em,
+      var(--trans) 0.21em,
+      var(--trans) 3em
+    ),
+    repeating-radial-gradient(
+      circle at 1.15em 0.95em,
+      var(--bloom),
+      var(--bloom) 0.2em,
+      var(--trans) 0.21em,
+      var(--trans) 3em
+    ),
+    repeating-radial-gradient(
+      circle at 1.05em 1.05em,
+      var(--rouge),
+      var(--rouge) 0.2em,
+      var(--trans) 0.21em,
+      var(--trans) 3em
+    ),
+    repeating-radial-gradient(
+      circle at 1.02em 1.08em,
+      var(--ink),
+      var(--ink) 0.2em,
+      var(--trans) 0.21em,
+      var(--trans) 3em
+    );
+  background-size: 1.6em 1.6em;
+  background-position: 1.17em 1.12em;
+}

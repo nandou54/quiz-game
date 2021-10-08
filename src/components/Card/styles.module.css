@@ -1,0 +1,55 @@
+.base {
+  background-color: rgba(235, 235, 235, 0.85);
+  font-size: 1rem;
+
+  width: 280px;
+  padding: 50px;
+
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+
+  position: absolute;
+  top: calc(50% - 225px);
+  left: calc(50% - 200px);
+
+  box-shadow: 2px 3px 1px 0 black;
+  transform: translateX(200%) scale(50%);
+
+  animation: appear 0s ease-out forwards;
+}
+
+.base .question {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.base .answers {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.done {
+  background-color: green;
+  transform: translateX(0);
+
+  animation: disappear 0.8s ease-in forwards 0.5s;
+}
+
+@keyframes appear {
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes disappear {
+  to {
+    transform: translateX(-200%) scale(50%);
+  }
+}
