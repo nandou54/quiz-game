@@ -1,25 +1,38 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  mone: 'initial',
-  categories: []
+  mode: 'initial',
+  selectedCategories: [],
+  questions: 5
 }
 
 export const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    startGame: (state, action) => {
-      state.mode = 'game'
-      state.categories = action.payload
+    addCategory: (state, action) => {
+      state.selectedCategories.push(action.payload)
     },
-    stopGame: (state) => {
+    removeCategory: (state, action) => {
+      const index = state.selectedCategories.indexOf(action.payload)
+      state.selectedCategories.splice(index, 1)
+    },
+    setQuestions: (state, action) => {
+      state.questions = action.payload
+    },
+    startGame: (state) => {
+      state.mode = 'game'
+    },
+    endGame: (state) => {
+      state.mode = 'score'
+    },
+    restart: (state) => {
       state.mode = 'initial'
-      state.categories = []
     }
   }
 })
 
-export const { startGame, stopGame } = appSlice.actions
+export const { addCategory, removeCategory, setQuestions, startGame, endGame, restart } =
+  appSlice.actions
 
 export default appSlice.reducer

@@ -1,19 +1,31 @@
 import { shuffleArray } from '@/helper'
 import { setCards } from '@/slices/gameSlice'
 import axios from 'axios'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 function useGame() {
-  const { currentCard } = useSelector(({ game }) => game)
+  const [ready, setReady] = useState(false)
+
+  const {
+    app: { selectedCategories, questions },
+    game: { currentCard }
+  } = useSelector((state) => state)
+
   const dispatch = useDispatch()
 
   useEffect(() => {
+    const API_URL = `https://api.trivia.willfry.co.uk/questions?categories=${selectedCategories
+      .join(',')
+      .replaceAll(' ', '_')
+      .toLowerCase()}&limit=${questions}`
+
     axios
-      .get('https://api.trivia.willfry.co.uk/questions?limit=5')
+      .get(API_URL)
       .then(({ data }) => {
+        console.log(data)
         const newCards = data.map(
-          ({ question, correctAnswer, incorrectAnswers }, index) => {
+          ({ question, correctAnswer, incorrectAnswers, category }, index) => {
             if (incorrectAnswers.length > 3) incorrectAnswers.splice(3)
 
             const answers = [correctAnswer, ...incorrectAnswers]
@@ -23,17 +35,19 @@ function useGame() {
               index,
               question,
               answers,
-              correctAnswer
+              correctAnswer,
+              category
             }
           }
         )
 
         dispatch(setCards(newCards))
+        setReady(true)
       })
       .catch(console.log)
   }, [])
 
-  return { currentCard }
+  return { ready, currentCard }
 }
 
 export default useGame
