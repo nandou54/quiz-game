@@ -1,23 +1,32 @@
 import styles from './styles.module.css'
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import useClassName from '@/hooks/useClassName'
 import Answer from '@/components/Answer'
+import { answerCard } from '@/slices/gameSlice'
 
 function Card({ question, answers = [] }) {
   const [done, setDone] = useState(false)
-  const [selectedAnswer, setSelectedAnswer] = useState(-1)
 
-  const handleDone = () => {
-    setDone(false)
-  }
+  const { correctAnswer } = useSelector(({ game }) => game)
 
   const className = useClassName(styles, ['base', done && 'done'])
 
+  const dispatch = useDispatch()
+
+  const handleAnswer = (label) => {
+    setDone(true)
+    setTimeout(() => {
+      dispatch(answerCard(label))
+      setDone(false)
+    }, 1000)
+  }
+
   return (
-    <div className={className} onClick={handleDone}>
+    <div className={className}>
       <div className={styles.question}>
-        <h2>{question}</h2>
+        <h3>{question}</h3>
       </div>
 
       <div className={styles.answers}>
@@ -25,8 +34,9 @@ function Card({ question, answers = [] }) {
           <Answer
             key={i}
             label={label}
-            checked={selectedAnswer === i}
-            onClick={() => setSelectedAnswer(i)}
+            correct={correctAnswer === label}
+            done={done}
+            onClick={() => handleAnswer(label)}
           />
         ))}
       </div>
