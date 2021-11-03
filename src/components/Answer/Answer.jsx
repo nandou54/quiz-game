@@ -1,17 +1,18 @@
 import styles from './Answer.module.css'
 
 import useClassName from '@/hooks/useClassName'
+import Button from '@/components/Button'
 
-function Answer({ label, correct, done, onClick }) {
+function Answer({ label, correct, selected, done, onClick }) {
   const className = useClassName(styles, [
     'base',
-    done && (correct ? 'correct' : 'wrong')
+    done && (correct ? 'correct' : selected && 'wrong')
   ])
 
   return (
-    <button className={className} onClick={onClick}>
+    <Button className={className} onClick={onClick}>
       {label}
-    </button>
+    </Button>
   )
 }
 

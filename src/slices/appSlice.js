@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   mode: 'initial',
   selectedCategories: [],
-  questions: 5
+  questions: 5,
+  startTime: 0
 }
 
 export const appSlice = createSlice({
@@ -22,6 +23,7 @@ export const appSlice = createSlice({
     },
     startGame: (state) => {
       state.mode = 'game'
+      state.startTime = performance.now()
     },
     endGame: (state) => {
       state.mode = 'score'

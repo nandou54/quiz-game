@@ -23,7 +23,6 @@ function useGame() {
     axios
       .get(API_URL)
       .then(({ data }) => {
-        console.log(data)
         const newCards = data.map(
           ({ question, correctAnswer, incorrectAnswers, category }, index) => {
             if (incorrectAnswers.length > 3) incorrectAnswers.splice(3)

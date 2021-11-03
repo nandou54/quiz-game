@@ -20,6 +20,7 @@ export const gameSlice = createSlice({
     answerCard: (state, action) => {
       const result = {
         card: state.currentCard,
+        answer: action.payload,
         correct: action.payload === state.currentCard.correctAnswer
       }
       state.results.push(result)

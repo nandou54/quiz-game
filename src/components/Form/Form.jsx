@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import useClassName from '@/hooks/useClassName'
 import { addCategory, removeCategory, setQuestions, startGame } from '@/slices/appSlice'
 import categories from '@/constants/categories'
+import FlyingBox from '@/components/FlyingBox'
+import Button from '@/components/Button'
 
 function Form() {
   const { selectedCategories, questions } = useSelector(({ app }) => app)
@@ -35,7 +37,7 @@ function Form() {
 
   return (
     <form onSubmit={handleStartGame}>
-      <div className={styles.base}>
+      <FlyingBox className={styles.base}>
         <div>
           <h2>Welcome to Quiz Game</h2>
           <p>Please select one or more categories</p>
@@ -64,9 +66,9 @@ function Form() {
           {selectedCategories.length > 0 ? (
             <div className={styles.selectedCategories}>
               {selectedCategories.map((category) => (
-                <button key={category} value={category} onClick={handleRemoveCategory}>
+                <Button key={category} value={category} onClick={handleRemoveCategory}>
                   {category} ✕
-                </button>
+                </Button>
               ))}
             </div>
           ) : (
@@ -74,9 +76,9 @@ function Form() {
           )}
         </div>
         <div className={playClassName}>
-          <button type='submit'>Play</button>
+          <Button primary>Play</Button>
         </div>
-      </div>
+      </FlyingBox>
     </form>
   )
 }

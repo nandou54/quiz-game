@@ -1,27 +1,13 @@
 .base {
-  background-color: rgb(230, 230, 230);
-
-  width: 300px;
-  padding: 40px;
-  /* margin: 50px 0; */
-
-  border-radius: 35px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-
-  box-shadow: 8px 4px 8px 2px rgb(120, 120, 120);
-  transform: translateX(200%) scale(70%);
-
+  gap: 20px;
+  transform: translateX(200%) scale(90%);
   animation: appear 0.5s ease-out forwards;
 }
 
 .base .question {
   font-size: 1.2rem;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .base .answers {
@@ -34,7 +20,7 @@
 
 .done {
   transform: translateX(0);
-  animation: disappear 0.5s ease-in forwards 0.5s;
+  animation: disappear 0.5s ease-in forwards 1.5s;
 }
 
 @keyframes appear {
@@ -45,6 +31,6 @@
 
 @keyframes disappear {
   to {
-    transform: translateX(-200%) scale(70%);
+    transform: translateX(-200%) scale(90%);
   }
 }

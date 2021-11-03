@@ -3,50 +3,63 @@ import styles from './Score.module.css'
 
 import useClassName from '@/hooks/useClassName'
 import { restart } from '@/slices/appSlice'
+import Button from '@/components/Button'
+import FlyingBox from '@/components/FlyingBox'
 
 function Score() {
   const dispatch = useDispatch()
   const {
-    app: { questions },
+    app: { questions, startTime },
     game: { results }
   } = useSelector((state) => state)
 
   const correctAnswers = results.filter(({ correct }) => correct).length
-  const score = correctAnswers * 5
+
+  const elapsedTime = (performance.now() - startTime) / 1000
+  let score = (correctAnswers / results.length) * (results.length * 10 - elapsedTime)
+  score = score >= 0 ? score : correctAnswers / results.length
 
   const handleRestartGame = () => {
     dispatch(restart())
   }
 
   return (
-    <div className={styles.base}>
-      <h1>{score}</h1>
+    <FlyingBox className={styles.base}>
+      <h1>Score: {score.toFixed(1)}</h1>
       <h3>
         Correct answers: {correctAnswers}/{questions}
       </h3>
+      <h3>Time elapsed: {elapsedTime.toFixed(1)}s</h3>
       <div className={styles.results}>
-        {results.map(({ correct, card }, i) => (
-          <Result key={i} correct={correct} {...card} />
+        {results.map(({ correct, answer, card }, i) => (
+          <Result key={i} number={i + 1} correct={correct} answer={answer} {...card} />
         ))}
       </div>
       <div className={styles.restart}>
-        <button onClick={handleRestartGame}>restart</button>
+        <Button primary onClick={handleRestartGame}>
+          Restart
+        </Button>
       </div>
-    </div>
+    </FlyingBox>
   )
 }
 
-function Result({ question, correctAnswer, correct }) {
+function Result({ question, number, answer, correctAnswer, correct }) {
   const className = useClassName(styles, ['result', correct && 'correct'])
 
   return (
     <div className={className}>
       <div>
-        <b>Question:</b> {question}
+        <b>Question {number}:</b> {question}
       </div>
-      <div>
-        <b>Answer:</b> {correctAnswer}
+      <div className={styles.answer}>
+        <b>Your answer:</b> <span>{answer}</span>
       </div>
+      {!correct && (
+        <div>
+          <b>Correct answer:</b> {correctAnswer}
+        </div>
+      )}
     </div>
   )
 }

@@ -11,14 +11,6 @@ body {
   line-height: 1.9rem;
 
   color: rgb(25, 25, 30);
-
-  background-color: #9d9dac;
-  background-image: repeating-radial-gradient(
-      circle at 0 0,
-      transparent 0,
-      #e5e5f7 3.5rem
-    ),
-    repeating-linear-gradient(#d365c18f, #5e63cc9c);
 }
 
 main {
@@ -46,4 +38,18 @@ button:hover {
 
 small {
   color: rgb(45, 45, 55);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(55, 55, 70, 0.4);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  margin: 3px;
 }

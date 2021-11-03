@@ -1,38 +1,47 @@
 .base {
-  background-color: rgb(230, 230, 230);
+  gap: 15px;
 
-  height: max-content;
-  width: 420px;
-  padding: 30px 50px;
-  margin: auto;
-
-  border-radius: 35px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-
-  box-shadow: 8px 4px 8px 2px rgb(120, 120, 120);
+  opacity: 0;
+  animation: appear 0.5s ease forwards;
 }
 
 .base h1 {
-  text-align: center;
-  font-size: 3rem;
-  margin: 20px 0;
+  margin-bottom: 10px;
+}
+
+.base h3 {
+  margin: 0;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  height: 200px;
+  padding: 15px;
+  margin: 20px auto;
+
+  border-radius: 10px;
+  border: 2px solid rgba(55, 55, 70, 0.4);
+
+  overflow-y: auto;
 }
 
 .restart {
   align-self: center;
 }
 
-.restart button {
-  background-color: rgb(90, 230, 70);
-
-  font-size: 1.05rem;
-  padding: 10px 20px;
-  border-radius: 12.5px;
+.result .answer span {
+  text-decoration: 2.5px underline rgb(233, 68, 68);
 }
 
-.restart button:hover {
-  background-color: rgb(70, 200, 60);
+.result.correct .answer span {
+  text-decoration: 2.5px underline rgb(86, 189, 70);
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+  }
 }

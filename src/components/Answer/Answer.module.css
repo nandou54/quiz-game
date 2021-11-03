@@ -1,25 +1,14 @@
 .base {
-  background-color: rgba(0, 0, 0, 0.05);
-
-  font-size: 1.1rem;
-  text-align: left;
-
+  font-size: 1rem;
   padding: 15px 20px;
-  width: 100%;
 
-  border-radius: 15px;
-
-  transition: background-color 0.25s;
-}
-
-.base:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
 }
 
 .base.correct {
-  background-color: rgb(100, 230, 120);
+  background-color: rgb(112, 221, 128);
 }
 
 .base.wrong {
-  background-color: rgb(230, 120, 110);
+  background-color: rgb(255, 138, 128);
 }
