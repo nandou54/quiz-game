@@ -11,9 +11,13 @@ function Form() {
   const { selectedCategories, questions } = useSelector(({ app }) => app)
   const dispatch = useDispatch()
 
+  const categoriesButtons = categories.map((name) => ({
+    name,
+    selected: selectedCategories.includes(name)
+  }))
+
   const handleAddCategory = (ev) => {
     dispatch(addCategory(ev.target.value))
-    ev.target.value = ''
   }
 
   const handleRemoveCategory = (ev) => {
@@ -40,43 +44,35 @@ function Form() {
       <FlyingBox className={styles.base}>
         <div>
           <h2>Welcome to Quiz Game</h2>
-          <p>Please select one or more categories</p>
-          <div className={styles.categories}>
-            <label htmlFor='categories'>Categories</label>
-            <select name='categories' defaultValue='' onClick={handleAddCategory}>
-              {categories
-                .filter((category) => !selectedCategories.includes(category))
-                .map((category) => (
-                  <option key={category}>{category}</option>
-                ))}
-            </select>
-            <label htmlFor='number'>Questions</label>
-            <input
-              type='number'
-              name='number'
-              value={questions}
-              onChange={handleQuestions}
-              min={5}
-              max={20}
-            />
-          </div>
+          <p>Please fill the next options</p>
         </div>
-        <div>
-          <h3>Categories selected</h3>
-          {selectedCategories.length > 0 ? (
-            <div className={styles.selectedCategories}>
-              {selectedCategories.map((category) => (
-                <Button key={category} value={category} onClick={handleRemoveCategory}>
-                  {category} ✕
-                </Button>
-              ))}
-            </div>
-          ) : (
-            <small>None selected</small>
-          )}
+        <div className={styles.questions}>
+          <h3>Questions</h3>
+          <input
+            type='number'
+            name='number'
+            value={questions}
+            onChange={handleQuestions}
+            min={5}
+            max={20}
+          />
+        </div>
+        <h3>Categories</h3>
+        <div className={styles.categories}>
+          {categoriesButtons.map(({ name, selected }) => (
+            <Button
+              key={name}
+              className={selected ? styles.selected : ''}
+              type='button'
+              value={name}
+              onClick={selected ? handleRemoveCategory : handleAddCategory}
+            >
+              {name} {selected ? '✕' : ' +'}
+            </Button>
+          ))}
         </div>
         <div className={playClassName}>
-          <Button primary>Play</Button>
+          <Button primary>Start Game</Button>
         </div>
       </FlyingBox>
     </form>

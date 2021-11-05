@@ -1,29 +1,11 @@
 .base {
+  gap: 10px;
+
   opacity: 0;
   animation: appear 0.5s ease forwards;
 }
 
-.categories {
-  display: flex;
-  align-items: center;
-
-  gap: 15px;
-  margin-top: 30px;
-}
-
-.categories select {
-  background-color: transparent;
-  padding: 7px;
-
-  border: 2px solid rgba(55, 55, 70, 0.4);
-  border-radius: 10px;
-}
-
-.categories option {
-  padding: 8px;
-}
-
-.categories input {
+.base input {
   background-color: transparent;
   width: 40px;
   padding: 8px;
@@ -32,7 +14,13 @@
   border-radius: 10px;
 }
 
-.selectedCategories {
+.questions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.categories {
   display: flex;
   flex-wrap: wrap;
 
@@ -40,8 +28,13 @@
   align-items: center;
 }
 
+.categories button.selected {
+  background-color: rgb(172, 203, 212);
+}
+
 .play {
   align-self: center;
+  margin-top: 25px;
 }
 
 .play.forbidden button:hover {
