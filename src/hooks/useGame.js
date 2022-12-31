@@ -15,7 +15,7 @@ function useGame() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const API_URL = `https://the-trivia-api.com/questions?categories=${selectedCategories
+    const API_URL = `https://the-trivia-api.com/api/questions?categories=${selectedCategories
       .join(',')
       .replaceAll(' ', '_')
       .toLowerCase()}&limit=${questions}`
