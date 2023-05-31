@@ -38,6 +38,7 @@ button:hover {
 
 small {
   color: rgb(45, 45, 55);
+  font-size: 15px;
 }
 
 ::-webkit-scrollbar {

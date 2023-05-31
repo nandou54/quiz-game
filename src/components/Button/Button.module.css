@@ -19,13 +19,13 @@
 }
 
 .base.primary {
-  background-color: rgb(115, 226, 98);
+  background-color: rgb(136, 223, 123);
   font-size: 1.05rem;
   padding: 8px 18px;
 }
 
 .base.primary:hover {
-  background-color: rgb(90, 220, 70);
+  background-color: rgb(120, 230, 102);
 }
 
 .base.primary:active {

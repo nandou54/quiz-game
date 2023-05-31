@@ -5,6 +5,7 @@ import Form from '@/components/Form'
 import Game from '@/components/Game'
 import Score from '@/components/Score'
 import useClassName from '@/hooks/useClassName'
+import Footer from '@/components/Footer'
 
 const ComponentRendered = { initial: <Form />, game: <Game />, score: <Score /> }
 
@@ -20,7 +21,12 @@ function App() {
     currentCard.category && currentCard.category.replace(/\s/g, '').toLowerCase()
   ])
 
-  return <div className={className}>{ComponentRendered[mode]}</div>
+  return (
+    <div className={className}>
+      {ComponentRendered[mode]}
+      <Footer />
+    </div>
+  )
 }
 
 export default App

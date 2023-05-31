@@ -19,7 +19,7 @@ export const appSlice = createSlice({
       state.selectedCategories.splice(index, 1)
     },
     setQuestions: (state, action) => {
-      state.questions = action.payload
+      state.questions = Number(action.payload)
     },
     startGame: (state) => {
       state.mode = 'game'

@@ -8,17 +8,20 @@ import useClassName from '@/hooks/useClassName'
 import { answerCard } from '@/slices/gameSlice'
 import { endGame } from '@/slices/appSlice'
 
-function Card({ question, answers = [], correctAnswer, category }) {
+function Card({ index, category, question, correctAnswer, answers = [] }) {
+  const dispatch = useDispatch()
+
   const [done, setDone] = useState(false)
   const [selectedAnswer, setSelectedAnswer] = useState()
 
   const { lastCard } = useSelector(({ game }) => game)
-  const dispatch = useDispatch()
+  const { questions } = useSelector(({ app }) => app)
 
   const className = useClassName(styles, ['base', done && 'done'])
 
   const handleAnswer = (label) => {
     if (done) return
+
     setDone(true)
     setSelectedAnswer(label)
 
@@ -32,7 +35,12 @@ function Card({ question, answers = [], correctAnswer, category }) {
 
   return (
     <FlyingBox className={className}>
-      <small>{category}</small>
+      <div className={styles.number}>
+        <span className={styles.index}>{index + 1}</span>
+        <span className={styles.slash}>/</span>
+        <span className={styles.total}>{questions}</span>
+      </div>
+      <div className={styles.category}>{category}</div>
       <div className={styles.question}>
         <h3>{question}</h3>
       </div>

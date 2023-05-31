@@ -1,8 +1,9 @@
-import { shuffleArray } from '@/helper'
-import { setCards } from '@/slices/gameSlice'
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
+import axios from 'axios'
+import { shuffleArray } from '@/helper'
+import { setCards } from '@/slices/gameSlice'
 
 function useGame() {
   const [ready, setReady] = useState(false)
@@ -15,7 +16,7 @@ function useGame() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const API_URL = `https://the-trivia-api.com/api/questions?categories=${selectedCategories
+    const API_URL = `https://the-trivia-api.com/v2/questions?categories=${selectedCategories
       .join(',')
       .replaceAll(' ', '_')
       .toLowerCase()}&limit=${questions}`
@@ -32,10 +33,10 @@ function useGame() {
 
             return {
               index,
-              question,
+              question: question.text,
               answers,
               correctAnswer,
-              category
+              category: category.replaceAll('_', ' ')
             }
           }
         )

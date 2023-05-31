@@ -3,17 +3,24 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import useClassName from '@/hooks/useClassName'
 import { addCategory, removeCategory, setQuestions, startGame } from '@/slices/appSlice'
-import categories from '@/constants/categories'
+import { categoriesLabels } from '@/constants/categories'
 import FlyingBox from '@/components/FlyingBox'
 import Button from '@/components/Button'
+
+const questionNumbers = [5, 10, 15, 20]
 
 function Form() {
   const { selectedCategories, questions } = useSelector(({ app }) => app)
   const dispatch = useDispatch()
 
-  const categoriesButtons = categories.map((name) => ({
+  const categoriesButtons = categoriesLabels.map((name) => ({
     name,
     selected: selectedCategories.includes(name)
+  }))
+
+  const questionButtons = questionNumbers.map((number) => ({
+    number,
+    selected: number === questions
   }))
 
   const handleAddCategory = (ev) => {
@@ -31,6 +38,7 @@ function Form() {
   const handleStartGame = (ev) => {
     ev.preventDefault()
     if (!selectedCategories.length) return
+
     dispatch(startGame())
   }
 
@@ -43,18 +51,28 @@ function Form() {
     <form onSubmit={handleStartGame}>
       <FlyingBox className={styles.base}>
         <div>
-          <h2>Welcome to Quiz Game</h2>
-          <p>Please fill the next options</p>
+          <h1>Welcome to Quiz Game</h1>
         </div>
+        <h3>Questions</h3>
         <div className={styles.questions}>
-          <h3>Questions</h3>
+          {questionButtons.map(({ number, selected }) => (
+            <Button
+              key={number}
+              className={selected ? styles.selected : ''}
+              type='button'
+              value={number}
+              onClick={handleQuestions}
+            >
+              {number}
+            </Button>
+          ))}
           <input
             type='number'
             name='number'
             value={questions}
             onChange={handleQuestions}
             min={5}
-            max={20}
+            max={40}
           />
         </div>
         <h3>Categories</h3>
@@ -67,7 +85,7 @@ function Form() {
               value={name}
               onClick={selected ? handleRemoveCategory : handleAddCategory}
             >
-              {name} {selected ? '✕' : ' +'}
+              {name} {selected ? '⨯' : '+'}
             </Button>
           ))}
         </div>
