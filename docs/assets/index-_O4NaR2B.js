@@ -10204,7 +10204,7 @@ function ir({ children: e, className: t, primary: n, ...r }) {
   const o = `${t} ${Ln(C0, ['base', n && 'primary'])}`
   return R.jsx('button', { className: o, ...r, children: e })
 }
-const x0 = '/quiz-game/icon.svg',
+const x0 = '/quiz-game/favicon.svg',
   N0 = [5, 10, 15, 20]
 function P0() {
   const { selectedCategories: e, questions: t } = Yt(({ app: c }) => c),

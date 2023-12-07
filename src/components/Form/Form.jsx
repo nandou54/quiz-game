@@ -7,7 +7,7 @@ import { categoriesLabels } from '@/constants/categories'
 import FlyingBox from '@/components/FlyingBox'
 import Button from '@/components/Button'
 
-import icon from '/icon.svg'
+import favicon from '/favicon.svg'
 
 const questionNumbers = [5, 10, 15, 20]
 
@@ -53,7 +53,7 @@ function Form() {
     <form onSubmit={handleStartGame}>
       <FlyingBox className={styles.base}>
         <div className={styles.header}>
-          <object data={icon} type='image/svg+xml' aria-label='Webpage icon' />
+          <object data={favicon} type='image/svg+xml' aria-label='Webpage icon' />
           <h1>Quiz Game</h1>
         </div>
         <h2>Number of questions</h2>
