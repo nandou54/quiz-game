@@ -37,7 +37,7 @@ function Score() {
       </div>
       <div className={styles.restart}>
         <Button primary onClick={handleRestartGame}>
-          Restart
+          Play again
         </Button>
       </div>
     </FlyingBox>

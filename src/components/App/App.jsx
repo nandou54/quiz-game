@@ -10,12 +10,9 @@ import Footer from '@/components/Footer'
 const ComponentRendered = { initial: <Form />, game: <Game />, score: <Score /> }
 
 function App() {
-  const { mode, currentCard } = useSelector(
-    ({ app: { mode }, game: { currentCard } }) => ({
-      mode,
-      currentCard
-    })
-  )
+  const mode = useSelector((state) => state.app.mode)
+  const currentCard = useSelector((state) => state.game.currentCard)
+
   const className = useClassName(styles, [
     'base',
     currentCard.category && currentCard.category.replace(/\s/g, '').toLowerCase()

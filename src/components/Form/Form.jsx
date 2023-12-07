@@ -7,6 +7,8 @@ import { categoriesLabels } from '@/constants/categories'
 import FlyingBox from '@/components/FlyingBox'
 import Button from '@/components/Button'
 
+import icon from '/icon.svg'
+
 const questionNumbers = [5, 10, 15, 20]
 
 function Form() {
@@ -50,10 +52,11 @@ function Form() {
   return (
     <form onSubmit={handleStartGame}>
       <FlyingBox className={styles.base}>
-        <div>
-          <h1>Welcome to Quiz Game</h1>
+        <div className={styles.header}>
+          <object data={icon} type='image/svg+xml' aria-label='Webpage icon' />
+          <h1>Quiz Game</h1>
         </div>
-        <h3>Questions</h3>
+        <h2>Number of questions</h2>
         <div className={styles.questions}>
           {questionButtons.map(({ number, selected }) => (
             <Button
@@ -69,13 +72,14 @@ function Form() {
           <input
             type='number'
             name='number'
+            title='Custom umber of questions'
             value={questions}
             onChange={handleQuestions}
             min={5}
             max={40}
           />
         </div>
-        <h3>Categories</h3>
+        <h2>Categories</h2>
         <div className={styles.categories}>
           {categoriesButtons.map(({ name, selected }) => (
             <Button
