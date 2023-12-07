@@ -20,6 +20,10 @@ h5,
 h6 {
   margin: 0;
 }
+h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
 button {
   outline: none;
   border: none;
@@ -121,13 +125,23 @@ small {
     background-position: 0% 50%;
   }
 }
-._base_188nm_1 {
+._base_pqebi_1 {
   gap: 10px;
   width: 100px;
   opacity: 0;
-  animation: _appear_188nm_1 0.5s ease forwards;
+  animation: _appear_pqebi_1 0.5s ease forwards;
 }
-._base_188nm_1 input {
+._header_pqebi_9 {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 70px;
+}
+._header_pqebi_9 > * {
+  max-height: 100%;
+  margin: 0;
+}
+._base_pqebi_1 input {
   font-size: 16px;
   text-align: center;
   background-color: transparent;
@@ -136,52 +150,53 @@ small {
   border: 2px solid rgba(55, 55, 70, 0.4);
   border-radius: 10px;
 }
-._base_188nm_1 input::-webkit-outer-spin-button,
-._base_188nm_1 input::-webkit-inner-spin-button {
+._base_pqebi_1 input::-webkit-outer-spin-button,
+._base_pqebi_1 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-._questions_188nm_27 {
+._questions_pqebi_40 {
   display: flex;
   gap: 20px;
   align-items: center;
   justify-content: center;
 }
-._categories_188nm_34 {
+._categories_pqebi_47 {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
   align-items: center;
   justify-content: center;
 }
-._categories_188nm_34 button,
-._questions_188nm_27 button {
+._categories_pqebi_47 button,
+._questions_pqebi_40 button {
   text-transform: capitalize;
   line-height: 20px;
   transition: background-color 0.2s ease;
 }
-._questions_188nm_27 button {
+._questions_pqebi_40 button {
   font-size: 16px;
   width: 70px;
 }
-._categories_188nm_34 button._selected_188nm_55,
-._questions_188nm_27 button._selected_188nm_55 {
+._categories_pqebi_47 button._selected_pqebi_68,
+._questions_pqebi_40 button._selected_pqebi_68 {
   background-color: #accbd4;
 }
-._play_188nm_60 {
+._play_pqebi_73 {
   align-self: center;
   margin-top: 30px;
 }
-._play_188nm_60._forbidden_188nm_65 button:hover {
+._play_pqebi_73._forbidden_pqebi_78 button:hover {
   cursor: not-allowed;
 }
-@keyframes _appear_188nm_1 {
+@keyframes _appear_pqebi_1 {
   to {
     opacity: 1;
   }
 }
 ._base_slcfb_1 {
   background-color: #fff6;
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   width: 550px;
   margin: 0 auto;
@@ -345,6 +360,7 @@ small {
   justify-content: center;
   gap: 30px;
   background-color: #fff6;
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   width: 100%;
   height: 50px;
