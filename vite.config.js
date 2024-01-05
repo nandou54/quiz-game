@@ -4,9 +4,6 @@ import path from 'path'
 
 export default defineConfig({
   base: '/quiz-game/',
-  build: {
-    outDir: 'docs'
-  },
   sourcemap: true,
   plugins: [react()],
   resolve: {
