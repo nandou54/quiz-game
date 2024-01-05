@@ -10,7 +10,7 @@ body {
   font-size: 1rem;
   line-height: 1.9rem;
 
-  color: rgb(25, 25, 30);
+  color: #19191e;
 }
 
 main {
@@ -47,7 +47,7 @@ small {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(55, 55, 70, 0.4);
+  background-color: #37374666;
   border-radius: 10px;
 }
 ::-webkit-scrollbar-track {
