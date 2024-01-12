@@ -1,6 +1,7 @@
 import './index.css'
 import React from 'react'
 import { Provider } from 'react-redux'
+import { Analytics } from '@vercel/analytics/react'
 
 import App from '@/components/App'
 import { store } from '@/store'
@@ -11,5 +12,7 @@ const root = createRoot(container)
 root.render(
   <Provider store={store}>
     <App />
+
+    <Analytics />
   </Provider>
 )
