@@ -1,6 +1,6 @@
 import styles from './Footer.module.css'
 
-function FlyingBox() {
+function Footer() {
   return (
     <div className={styles.base}>
       <a href='https://github.com/nanndo54/quiz-game' target='_blank' rel='noreferrer'>
@@ -13,4 +13,4 @@ function FlyingBox() {
   )
 }
 
-export default FlyingBox
+export default Footer
